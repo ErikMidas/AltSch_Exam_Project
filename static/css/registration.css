@@ -197,6 +197,19 @@ form {
   margin-right: 200px;
 }
 
+/* START INPUT FIELD COLOUR */
+
+.user-control:-webkit-autofill,
+.user-control:-webkit-autofill:hover,
+.user-control:-webkit-autofill:focus,
+.user-control:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #f0f0f0 inset !important;
+    box-shadow: 0 0 0 30px #f0f0f0 inset !important;
+    margin: 16px 0 55px 0;
+}
+
+/* END INPUT FIELD COLOUR */
+
 .span {
   font-size: 0.7em;
   display: flex;
@@ -212,6 +225,17 @@ form {
 
 .conditions label {
   margin-right: 100px;
+}
+
+/* FLASH MESSAGES */
+.error-flash {
+    color: red;
+    font-size: 1em;
+}
+
+.success-flash {
+    color: green;
+    font-size: 1em;
 }
 
 
@@ -234,6 +258,10 @@ form {
 .bttn:hover {
   background-color: #000;
   color: #fff;
+}
+
+.tnc {
+    text-decoration: underline;
 }
 
 .panels-container {

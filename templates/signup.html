@@ -40,13 +40,13 @@
         {% if current_user.is_authenticated %}
         <a href="{{url_for('dashboard')}}" class="btn">Home</a>
         <a href="{{url_for('about')}}" class="btn">About</a>
-        <a href="{{url_for('contact')}}" class="btn">Contact</a>
-        <a href="" class="btn">Create Blog</a>
+        <a href="{{url_for('contact')}}#contact" class="btn">Contact</a>
+        <a href="" class="btn">New Post</a>
         <a href="{{url_for('logout')}}" class="btn">Logout</a>
         {% else %}
         <a href="{{url_for('dashboard')}}" class="btn">Home</a>
         <a href="{{url_for('about')}}" class="btn">About</a>
-        <a href="{{url_for('contact')}}" class="btn">Contact</a>
+        <a href="{{url_for('contact')}}#contact" class="btn">Contact</a>
         <a href="{{url_for('login')}}" class="btn">Login</a>
         <a href="{{url_for('register')}}" class="btn active">Sign Up</a>
         {% endif %}
@@ -54,49 +54,76 @@
     </header>
 
     <!-----------------Main Section----------------->
-
-    <section class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                <form 
-                    action="{{url_for('login')}}"
-                    method="POST" class="Registration form">
-                    <h2 class="title">Registration Form</h2><br><span class="span">Please enter your details below</span>
-                    <div class="input-field">
-                        <i class="uil uil-user"></i>
-                        <input type="text" name="username" class="username" placeholder="Username" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="uil uil-envelope"></i>
-                        <input type="email" name="email" class="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="uil uil-lock"></i>
-                        <input type="password" name="password" class="password" placeholder="Password" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="uil uil-lock"></i>
-                        <input type="password" name="password" class="password" placeholder="Confirm Password" required>
-                    </div>
-                        <span class="span">
-                            <div class="conditions">
-                            <label><input type="checkbox">I agree with all the <a href="#">Terms and Conditions</a></label>
-                            </div>
-                        </span>
-                        <input type="submit" value="Register" class="bttn solid">
-                </form>
-            </div>
-        </div>
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>New here ?</h3>
-                    <p>Register and experience the Midas touch! You don't want to miss out!</p>
-                </div>
     
-                <img src="{{url_for('static', filename="./images/login.png")}}" class="image" alt="image">
-            </div>
-    </section>
+    <section class="container">
+      <div class="forms-container">
+          <div class="signin-signup">
+              <form 
+                  action="{{url_for('register')}}"
+                  method="POST" class="Registration form">
+                  <h2 class="title">Registration Form</h2><br>
+                  <!-- error flash message -->
+                  {% with error = get_flashed_messages(category_filter=["error"]) %}
+                  {% if error %}
+                  <div class="error-flash">
+                    {% for message in error %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                  {% endwith %}
+                  <!-- end error flash -->
+  
+                  <!-- success flash message -->
+                  {% with success = get_flashed_messages(category_filter=["success"]) %}
+                  {% if success %}
+                  <div class="success-flash">
+                    {% for message in success %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                  {% endwith %}
+  
+                  <!-- end success flash message -->
+  
+                <span class="span">Please enter your details below</span>
+                  <div class="input-field">
+                      <i class="uil uil-user"></i>
+                      <input type="text" name="username" class="username user-control" placeholder="Username" required>
+                  </div>
+                  <div class="input-field">
+                      <i class="uil uil-envelope"></i>
+                      <input type="email" name="email" class="email user-control" placeholder="Email Address" required>
+                  </div>
+                  <div class="input-field">
+                      <i class="uil uil-lock"></i>
+                      <input type="password" name="password" class="password" placeholder="Password" required>
+                  </div>
+                  <div class="input-field">
+                      <i class="uil uil-lock"></i>
+                      <input type="password" name="confirm-password" class="confirm-password" placeholder="Confirm Password" required>
+                  </div>
+                      <span class="span">
+                          <div class="conditions">
+                          <label><input type="checkbox" name="checkbox" value="True"> I agree with all the <a class="tnc" href="#">Terms and Conditions</a></label>
+                          </div>
+                      </span>
+                      <input type="submit" value="Register" class="bttn solid">
+              </form>
+          </div>
+      </div>
+      <div class="panels-container">
+          <div class="panel left-panel">
+              <div class="content">
+                  <h3>New here ?</h3>
+                  <p>Register and experience the Midas touch! You don't want to miss out!</p>
+              </div>
+  
+              <img src="{{url_for('static', filename="./images/login.png")}}" class="image" alt="image">
+          </div>
+  </section>
+  
 
     <!-----------------Footer Section----------------->
     <footer>
