@@ -118,6 +118,7 @@ def login():
         password = request.form.get("password")
 
         user = User.query.filter_by(username=username).first()
+        
         # username doesn't exist or password incorrect.
         
         if not user:
@@ -220,6 +221,7 @@ def about():
 
 
 # Route for POST
+# This route enables users that are logged in or not to view all blog posts
 
 @app.route("/post/<int:post_id>", methods=["GET", "POST"])
 def show_post(post_id):
@@ -244,6 +246,7 @@ def show_post(post_id):
 
 
 # Route for NEW POST
+# This route enables users that are logged in to create blog posts
 
 @app.route("/new-post", methods=["GET", "POST"])
 @login_required
@@ -268,6 +271,7 @@ def add_new_post():
 
 
 # Edit Post Route
+# this route enables the user to edit only their blog posts
 
 @app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
 @login_required
@@ -293,6 +297,7 @@ def edit_post(post_id):
 
 
 # Delete Route
+# This route facilitates the removal of blog posts by the user that created it
 
 @app.route("/delete/<int:post_id>")
 @login_required
@@ -303,6 +308,10 @@ def delete_post(post_id):
     return redirect(url_for("dashboard"))
 
 
+
+# Running Blog
+# The Host and Port values allows the blog app to be loaded on a port 4000 different from the default port 5000
+# can be acessed via 127.0.0.1:4000 or localhost:4000
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="4000", debug=True)
