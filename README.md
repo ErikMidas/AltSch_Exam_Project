@@ -133,7 +133,7 @@ Python3: [Get Python](https://www.python.org/downloads/)
    ```sh
    python app.py
    ```
-5. Open the link generated in the terminal on a browser
+5. Open the link generated in the terminal on a browser or visit [http://localhost:4000](http://localhost:4000)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -145,6 +145,10 @@ Python3: [Get Python](https://www.python.org/downloads/)
 <br />
 
 [![Midas Blog Screenshot][Midas-blog-screenshot]](https://github.com/ErikMidas/AltSch_Exam_Project/blob/main/static/images/Midas%20Blog.png)
+
+<br />
+
+[![Midas Blog Screenshot2][Midas-blog-screenshot2]](https://github.com/ErikMidas/AltSch_Exam_Project/blob/main/static/images/Midas%20Blog2.png)
 
 <br/>
 
